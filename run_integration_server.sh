@@ -12,6 +12,10 @@ if [ -z "$ContainerRuntime" ]; then
 	ContainerRuntime="podman";
 fi
 
+if [ -z "$IMAGE_HOST" ]; then
+		echo "IMAGE_HOST env var not defined; exiting";
+fi
+
 $ContainerRuntime login --get-login "$IMAGE_HOST";
 if [ $? -eq 0 ]; then
 	echo "login confirmed";
